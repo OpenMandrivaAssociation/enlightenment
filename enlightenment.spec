@@ -3,6 +3,7 @@
 %define theme_version 0.16.8
 %define doc_version 0.16.8-0.02
 %define version	0.16.8.5
+%define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 %define prefix	%{_prefix}
 %define bindir	%{prefix}/bin
@@ -11,7 +12,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	%{Summary}
 License:	GPL
 Group:		Graphical desktop/Enlightenment
@@ -95,8 +96,8 @@ convert %SOURCE7 -geometry 48x48 $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Name=%{name}
-Comment=%{summary}
+Name=%{Name}
+Comment=%{Summary}
 Exec=${_bindir}/${bin_name} 
 Icon=%{name}
 Terminal=false
