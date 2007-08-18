@@ -2,7 +2,7 @@
 %define bin_name	e16
 %define theme_version 0.16.8
 %define doc_version 0.16.8-0.02
-%define version	0.16.8.5
+%define version	0.16.8.9
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 %define prefix	%{_prefix}
@@ -27,7 +27,7 @@ BuildRequires:  libxft-devel
 BuildRequires:  libxrandr-devel
 BuildRequires:  texinfo
 BuildRequires:  ImageMagick
-Source0:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-%{version}.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-%{version}.tar.gz
 Source1:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-docs-%{doc_version}.tar.bz2
 Source2:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-theme-BlueSteel-%{theme_version}.tar.bz2
 Source3:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-theme-BrushedMetal-Tigert-%{theme_version}.tar.bz2
@@ -153,14 +153,14 @@ rm -fr $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-, root, root,755)
-%doc ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL README COMPLIANCE NEWS 
+%doc AUTHORS COPYING ChangeLog README COMPLIANCE
 %doc sample-scripts
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
 %{bindir}/*
 %{_libdir}/*
 %{_datadir}/applications/*
 %{datadir}/%{bin_name}
-%{datadir}/xsessions/%{bin_name}.desktop
+%{datadir}/xsessions/*.desktop
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
