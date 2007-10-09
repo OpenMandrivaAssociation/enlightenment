@@ -1,5 +1,5 @@
 %define name	enlightenment
-%define bin_name	e16
+%define bin_name e16
 %define theme_version 0.16.8
 %define doc_version 0.16.8-0.02
 %define version	0.16.8.10
@@ -12,7 +12,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 1
 Summary:	%{Summary}
 License:	GPL
 Group:		Graphical desktop/Enlightenment
