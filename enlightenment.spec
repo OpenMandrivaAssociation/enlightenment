@@ -42,7 +42,6 @@ Source8:	%{name}-0.16.5-themes-i18n.tar.bz2
 Requires:	ImageMagick >= 4.2.9
 Provides:	e16 Enlightenment
 URL:		http://www.enlightenment.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Enlightenment is a window manager for the X Window System that is designed to
