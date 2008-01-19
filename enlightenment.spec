@@ -1,8 +1,8 @@
 %define name	enlightenment
 %define bin_name e16
-%define theme_version 0.16.8
-%define doc_version 0.16.8-0.02
-%define version	0.16.8.10
+%define theme_version 0.16.8.0.2
+%define doc_version 0.16.8.0.1
+%define version	0.16.8.11
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 %define prefix	%{_prefix}
@@ -28,11 +28,8 @@ BuildRequires:  libxrandr-devel
 BuildRequires:  texinfo
 BuildRequires:  ImageMagick
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-%{version}.tar.gz
-Source1:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-docs-%{doc_version}.tar.bz2
-Source2:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-theme-BlueSteel-%{theme_version}.tar.bz2
-Source3:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-theme-BrushedMetal-Tigert-%{theme_version}.tar.bz2
-Source4:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-theme-Ganymede-%{theme_version}.tar.bz2
-Source5:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-theme-ShinyMetal-%{theme_version}.tar.bz2
+Source1:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-docs-%{doc_version}.tar.gz
+Source2:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-themes-%{theme_version}.tar.gz
 Source7:	%{name}.png
 # this overrides some themes' *.cfg files with other slightly modified to
 # use fontsets, and so be able to display text in any language
@@ -58,7 +55,7 @@ This package will install the Enlightenment window manager.
 
 %prep
 
-%setup -q -n %bin_name-%version -a 1 -a 2 -a 3 -a 4 -a 5
+%setup -q -n %bin_name-%version -a 1 -a 2 
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS"
@@ -68,11 +65,9 @@ export CXXFLAGS="$RPM_OPT_FLAGS"
 	    --enable-upgrade \
 	    --enable-zoom 
 
-for i in BlueSteel BrushedMetal-Tigert Ganymede ShinyMetal; do
-cd %{bin_name}-theme-$i-%{theme_version};
+cd %{bin_name}-themes-%{theme_version}
 ./configure --prefix=%{prefix}
 cd ..
-done;
 
 cd %{bin_name}-docs-%{doc_version}
 ./configure --prefix=%{prefix}
@@ -115,11 +110,9 @@ exec %{bindir}/%{bin_name}
 EOF
 
 
-for i in BlueSteel BrushedMetal-Tigert Ganymede ShinyMetal; do
-cd %{bin_name}-theme-$i-%{theme_version};
+cd %{bin_name}-themes-%{theme_version}
 %makeinstall_std
 cd ..
-done;
 
 # overwrite some themes' files with i18n'ed ones
 bzcat %SOURCE8 | tar xvf - -C $RPM_BUILD_ROOT%{datadir}/%{bin_name}
