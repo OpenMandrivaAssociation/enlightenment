@@ -2,7 +2,7 @@
 %define bin_name e16
 %define theme_version 0.16.8.0.2
 %define doc_version 0.16.8.0.1
-%define version	0.16.8.11
+%define version	0.16.8.13
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 %define prefix	%{_prefix}
