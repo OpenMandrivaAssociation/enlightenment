@@ -134,11 +134,15 @@ rm -rf `find $RPM_BUILD_ROOT -name .xvpics`
 rm -f $RPM_BUILD_ROOT/usr/etc/X11/dm/Sessions/enlightenment.desktop
 
 %post
+%if %mdkversion < 200900
 %update_menus
+%endif
 %make_session
 
 %postun
+%if %mdkversion < 200900
 %clean_menus
+%endif
 %make_session
 
 %clean
