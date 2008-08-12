@@ -60,11 +60,11 @@ This package will install the Enlightenment window manager.
 	    --enable-zoom 
 
 cd %{bin_name}-themes-%{theme_version}
-./configure --prefix=%{prefix}
+./configure --prefix=%{_prefix}
 cd ..
 
 cd %{bin_name}-docs-%{doc_version}
-./configure --prefix=%{prefix}
+./configure --prefix=%{_prefix}
 cd ..
 %make
 
@@ -109,7 +109,7 @@ cd %{bin_name}-themes-%{theme_version}
 cd ..
 
 # overwrite some themes' files with i18n'ed ones
-bzcat %SOURCE8 | tar xvf - -C $RPM_BUILD_ROOT%{datadir}/%{bin_name}
+bzcat %SOURCE8 | tar xvf - -C $RPM_BUILD_ROOT%{_datadir}/%{bin_name}
 
 
 cd %{bin_name}-docs-%{doc_version}
@@ -117,11 +117,11 @@ cd %{bin_name}-docs-%{doc_version}
 cd ..
 
 #rm some empty theme files
-rm -fr $RPM_BUILD_ROOT/%{datadir}/%{bin_name}/themes/BlueSteel/sound/sound.cfg
-rm -fr $RPM_BUILD_ROOT/%{datadir}/%{bin_name}/themes/BlueSteel/slideouts/slideouts.cfg
-rm -fr $RPM_BUILD_ROOT/%{datadir}/%{bin_name}/themes/BrushedMetal-Tigert/slideouts/slideouts.cfg
-rm -fr $RPM_BUILD_ROOT/%{datadir}/%{bin_name}/themes/BrushedMetal-Tigert/buttons/buttons.cfg
-rm -rf $RPM_BUILD_ROOT/%{datadir}/%{bin_name}/themes/BlueSteel/buttons/buttons.cfg
+rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BlueSteel/sound/sound.cfg
+rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BlueSteel/slideouts/slideouts.cfg
+rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/slideouts/slideouts.cfg
+rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/buttons/buttons.cfg
+rm -rf $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BlueSteel/buttons/buttons.cfg
 rm -rf `find $RPM_BUILD_ROOT -name .xvpics`
 
 %find_lang %{name} %{name} %{bin_name}
@@ -147,11 +147,11 @@ rm -fr $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README COMPLIANCE
 %doc sample-scripts
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
-%{bindir}/*
+%{_bindir}/*
 %{_libdir}/*
 %{_datadir}/applications/*
-%{datadir}/%{bin_name}
-%{datadir}/xsessions/*.desktop
+%{_datadir}/%{bin_name}
+%{_datadir}/xsessions/*.desktop
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
