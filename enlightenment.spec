@@ -2,17 +2,13 @@
 %define bin_name e16
 %define theme_version 0.16.8.0.2
 %define doc_version 0.16.8.0.1
-%define version	0.16.8.13
+%define version	0.16.8.14
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
-%define prefix	%{_prefix}
-%define bindir	%{prefix}/bin
-%define datadir	%{prefix}/share
-%define mandir	%{prefix}/man
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 1
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
@@ -58,9 +54,7 @@ This package will install the Enlightenment window manager.
 %setup -q -n %bin_name-%version -a 1 -a 2 
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS"
-export CXXFLAGS="$RPM_OPT_FLAGS"
-%configure  --enable-fsstd \
+%configure2_5x  --enable-fsstd \
 	    --enable-sound \
 	    --enable-upgrade \
 	    --enable-zoom 
@@ -130,7 +124,7 @@ rm -fr $RPM_BUILD_ROOT/%{datadir}/%{bin_name}/themes/BrushedMetal-Tigert/buttons
 rm -rf $RPM_BUILD_ROOT/%{datadir}/%{bin_name}/themes/BlueSteel/buttons/buttons.cfg
 rm -rf `find $RPM_BUILD_ROOT -name .xvpics`
 
-%find_lang %{name}
+%find_lang %{name} %{name} %{bin_name}
 rm -f $RPM_BUILD_ROOT/usr/etc/X11/dm/Sessions/enlightenment.desktop
 
 %post
@@ -161,6 +155,3 @@ rm -fr $RPM_BUILD_ROOT
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
-%{_datadir}/locale/*/LC_MESSAGES/%{bin_name}.mo
-
-
