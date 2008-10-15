@@ -8,7 +8,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
@@ -98,9 +98,9 @@ install -d 644 $RPM_BUILD_ROOT%{_sysconfdir}/X11/wmsession.d
 cat >$RPM_BUILD_ROOT%{_sysconfdir}/X11/wmsession.d/04enlightenment <<EOF
 NAME=%{Name}
 DESC=%{Summary}
-EXEC=%{bindir}/%{bin_name}
+EXEC=%{_bindir}/%{bin_name}
 SCRIPT:
-exec %{bindir}/%{bin_name}
+exec %{_bindir}/%{bin_name}
 EOF
 
 
