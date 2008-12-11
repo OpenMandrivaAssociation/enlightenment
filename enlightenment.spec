@@ -22,7 +22,7 @@ BuildRequires:  libsm-devel
 BuildRequires:  libxft-devel
 BuildRequires:  libxrandr-devel
 BuildRequires:  texinfo
-BuildRequires:  ImageMagick
+BuildRequires:  imagemagick
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-%{version}.tar.gz
 Source1:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-docs-%{doc_version}.tar.gz
 Source2:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-themes-%{theme_version}.tar.gz
@@ -32,7 +32,7 @@ Source7:	%{name}.png
 # the files inside that tarball may need to be modified or new added if the
 # themes' files from the Enlightenment sources change -- pablo
 Source8:	%{name}-0.16.5-themes-i18n.tar.bz2  
-Requires:	ImageMagick >= 4.2.9
+Requires:	imagemagick >= 4.2.9
 Provides:	e16 Enlightenment
 URL:		http://www.enlightenment.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
