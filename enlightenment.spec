@@ -1,14 +1,14 @@
 %define name	enlightenment
 %define bin_name e16
-%define theme_version 0.16.8.0.2
-%define doc_version 0.16.8.0.1
-%define version	0.16.8.14
+%define theme_version 0.16.8.0.3
+%define doc_version 0.16.8.0.2
+%define version	0.16.8.15
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 2
+Release:	%mkrel 1
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
