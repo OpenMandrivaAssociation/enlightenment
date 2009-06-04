@@ -1,8 +1,8 @@
 %define name	enlightenment
 %define bin_name e16
-%define theme_version 0.16.8.0.3
+%define theme_version 1.0.0
 %define doc_version 0.16.8.0.2
-%define version	0.16.8.15
+%define version	1.0.0
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
@@ -144,7 +144,7 @@ rm -fr $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-, root, root,755)
-%doc AUTHORS COPYING ChangeLog README COMPLIANCE
+%doc AUTHORS COPYING ChangeLog COMPLIANCE
 %doc sample-scripts
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
 %{_bindir}/*
