@@ -2,7 +2,7 @@
 %define bin_name e16
 %define theme_version 1.0.0
 %define doc_version 0.16.8.0.2
-%define version	1.0.0
+%define version	1.0.1
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
@@ -103,6 +103,8 @@ SCRIPT:
 exec %{_bindir}/%{bin_name}
 EOF
 
+#installed in right directory by %doc macro in file list
+rm -f %{buildroot}%{_docdir}/e16/README.html %{buildroot}%{_docdir}/e16/e16-docs.html
 
 cd %{bin_name}-themes-%{theme_version}
 %makeinstall_std
@@ -146,6 +148,7 @@ rm -fr $RPM_BUILD_ROOT
 %defattr(-, root, root,755)
 %doc AUTHORS COPYING ChangeLog COMPLIANCE
 %doc sample-scripts
+%doc docs/README.html docs/e16-docs.html
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
 %{_bindir}/*
 %{_libdir}/*
