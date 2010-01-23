@@ -2,7 +2,7 @@
 %define bin_name e16
 %define theme_version 1.0.0
 %define doc_version 0.16.8.0.2
-%define version	1.0.1.001
+%define version	1.0.1.901
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
@@ -148,13 +148,14 @@ rm -fr $RPM_BUILD_ROOT
 %defattr(-, root, root,755)
 %doc AUTHORS COPYING ChangeLog COMPLIANCE
 %doc sample-scripts
-%doc docs/README.html docs/e16-docs.html
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
 %{_bindir}/*
 %{_libdir}/*
 %{_datadir}/applications/*
 %{_datadir}/%{bin_name}
+%{_datadir}/doc/*
 %{_datadir}/xsessions/*.desktop
+%{_mandir}/man1/*
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
