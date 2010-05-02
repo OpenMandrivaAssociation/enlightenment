@@ -8,7 +8,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
@@ -82,12 +82,13 @@ install -m 644 %SOURCE7 $RPM_BUILD_ROOT%{_miconsdir}
 convert %SOURCE7 -geometry 32x32 $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
 convert %SOURCE7 -geometry 48x48 $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 
+rm -f $RPM_BUILD_ROOT%{_datadir}/applications/*.desktop
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=%{Name}
 Comment=%{Summary}
-Exec=${_bindir}/${bin_name} 
+Exec=%{_bindir}/%{bin_name} 
 Icon=%{name}
 Terminal=false
 Type=Applications
