@@ -127,7 +127,7 @@ rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/button
 rm -rf $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BlueSteel/buttons/buttons.cfg
 rm -rf `find $RPM_BUILD_ROOT -name .xvpics`
 
-%find_lang %{name} %{name} %{bin_name}
+%find_lang %{bin_name}
 rm -f $RPM_BUILD_ROOT/usr/etc/X11/dm/Sessions/enlightenment.desktop
 
 %post
@@ -145,7 +145,7 @@ rm -f $RPM_BUILD_ROOT/usr/etc/X11/dm/Sessions/enlightenment.desktop
 %clean
 rm -fr $RPM_BUILD_ROOT
 
-%files -f %{name}.lang
+%files -f %{bin_name}.lang
 %defattr(-, root, root,755)
 %doc AUTHORS COPYING ChangeLog COMPLIANCE
 %doc sample-scripts
@@ -153,6 +153,7 @@ rm -fr $RPM_BUILD_ROOT
 %{_bindir}/*
 %{_libdir}/*
 %{_datadir}/applications/*
+%{_datadir}/gnome-session/sessions/e16-gnome.session
 %{_datadir}/%{bin_name}
 %{_datadir}/doc/*
 %{_datadir}/xsessions/*.desktop
