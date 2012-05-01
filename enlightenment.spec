@@ -8,7 +8,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	2
+Release:	3
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
@@ -69,22 +69,22 @@ cd ..
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 ##build will fail if not done in this manner--CAE##
 %makeinstall_std
 
 # Install icons
-install -d 644 $RPM_BUILD_ROOT%{_miconsdir}
-install -d 644 $RPM_BUILD_ROOT%{_iconsdir}
-install -d 644 $RPM_BUILD_ROOT%{_liconsdir}
-install -m 644 %SOURCE7 $RPM_BUILD_ROOT%{_miconsdir}
-convert %SOURCE7 -geometry 32x32 $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-convert %SOURCE7 -geometry 48x48 $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
+install -d 644 %{buildroot}%{_miconsdir}
+install -d 644 %{buildroot}%{_iconsdir}
+install -d 644 %{buildroot}%{_liconsdir}
+install -m 644 %SOURCE7 %{buildroot}%{_miconsdir}
+convert %SOURCE7 -geometry 32x32 %{buildroot}%{_iconsdir}/%{name}.png
+convert %SOURCE7 -geometry 48x48 %{buildroot}%{_liconsdir}/%{name}.png
 
-rm -f $RPM_BUILD_ROOT%{_datadir}/applications/*.desktop
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+rm -f %{buildroot}%{_datadir}/applications/*.desktop
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=%{Name}
 Comment=%{Summary}
@@ -95,8 +95,8 @@ Type=Applications
 Categories=X-MandrivaLinux-System-Session-Windowmanagers;
 EOF
 
-install -d 644 $RPM_BUILD_ROOT%{_sysconfdir}/X11/wmsession.d
-cat >$RPM_BUILD_ROOT%{_sysconfdir}/X11/wmsession.d/04enlightenment <<EOF
+install -d 644 %{buildroot}%{_sysconfdir}/X11/wmsession.d
+cat >%{buildroot}%{_sysconfdir}/X11/wmsession.d/04enlightenment <<EOF
 NAME=%{Name}
 DESC=%{Summary}
 EXEC=%{_bindir}/%{bin_name}
@@ -112,7 +112,7 @@ cd %{bin_name}-themes-%{theme_version}
 cd ..
 
 # overwrite some themes' files with i18n'ed ones
-bzcat %SOURCE8 | tar xvf - -C $RPM_BUILD_ROOT%{_datadir}/%{bin_name}
+bzcat %SOURCE8 | tar xvf - -C %{buildroot}%{_datadir}/%{bin_name}
 
 
 cd %{bin_name}-docs-%{doc_version}
@@ -120,15 +120,15 @@ cd %{bin_name}-docs-%{doc_version}
 cd ..
 
 #rm some empty theme files
-rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BlueSteel/sound/sound.cfg
-rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BlueSteel/slideouts/slideouts.cfg
-rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/slideouts/slideouts.cfg
-rm -fr $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/buttons/buttons.cfg
-rm -rf $RPM_BUILD_ROOT/%{_datadir}/%{bin_name}/themes/BlueSteel/buttons/buttons.cfg
-rm -rf `find $RPM_BUILD_ROOT -name .xvpics`
+rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BlueSteel/sound/sound.cfg
+rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BlueSteel/slideouts/slideouts.cfg
+rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/slideouts/slideouts.cfg
+rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/buttons/buttons.cfg
+rm -rf %{buildroot}/%{_datadir}/%{bin_name}/themes/BlueSteel/buttons/buttons.cfg
+rm -rf `find %{buildroot} -name .xvpics`
 
 %find_lang %{bin_name}
-rm -f $RPM_BUILD_ROOT/usr/etc/X11/dm/Sessions/enlightenment.desktop
+rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
 
 %post
 %if %mdkversion < 200900
@@ -143,7 +143,7 @@ rm -f $RPM_BUILD_ROOT/usr/etc/X11/dm/Sessions/enlightenment.desktop
 %make_session
 
 %clean
-rm -fr $RPM_BUILD_ROOT
+rm -fr %{buildroot}
 
 %files -f %{bin_name}.lang
 %defattr(-, root, root,755)
@@ -151,7 +151,7 @@ rm -fr $RPM_BUILD_ROOT
 %doc sample-scripts
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
 %{_bindir}/*
-%{_libdir}/*
+%{_libdir}/e16
 %{_datadir}/applications/*
 %{_datadir}/gnome-session/sessions/e16-gnome.session
 %{_datadir}/%{bin_name}
