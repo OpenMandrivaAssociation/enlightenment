@@ -2,7 +2,7 @@
 %define bin_name e16
 %define theme_version 1.0.0
 %define doc_version 0.16.8.0.2
-%define version	1.0.10
+%define version	1.0.11
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
@@ -13,14 +13,14 @@ Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
 BuildRequires:  esound-devel
-BuildRequires:  freetype2-devel
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  imlib2-devel
 BuildRequires:  x11-data-bitmaps
-BuildRequires:  libx11-devel
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  libxxf86vm-devel
-BuildRequires:  libsm-devel
-BuildRequires:  libxft-devel
-BuildRequires:  libxrandr-devel
+BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(xft)
+BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  texinfo
 BuildRequires:  imagemagick
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-%{version}.tar.gz
@@ -35,7 +35,6 @@ Source8:	%{name}-0.16.5-themes-i18n.tar.bz2
 Requires:	imagemagick >= 4.2.9
 Provides:	e16 Enlightenment
 URL:		http://www.enlightenment.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Enlightenment is a window manager for the X Window System that is designed to
@@ -131,19 +130,10 @@ rm -rf `find %{buildroot} -name .xvpics`
 rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
 
 %post
-%if %mdkversion < 200900
-%update_menus
-%endif
 %make_session
 
 %postun
-%if %mdkversion < 200900
-%clean_menus
-%endif
 %make_session
-
-%clean
-rm -fr %{buildroot}
 
 %files -f %{bin_name}.lang
 %defattr(-, root, root,755)
