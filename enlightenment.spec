@@ -8,7 +8,7 @@
 
 Name:		%{name}
 Version:	%{version}
-Release:	3
+Release:	4
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
