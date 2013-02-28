@@ -129,12 +129,6 @@ rm -rf `find %{buildroot} -name .xvpics`
 %find_lang %{bin_name}
 rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
 
-%post
-%make_session
-
-%postun
-%make_session
-
 %files -f %{bin_name}.lang
 %defattr(-, root, root,755)
 %doc AUTHORS COPYING ChangeLog COMPLIANCE
