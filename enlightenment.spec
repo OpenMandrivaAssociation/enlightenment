@@ -5,6 +5,7 @@
 %define version	1.0.13
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
+%define _disable_ld_no_undefined 1
 
 Name:		%{name}
 Version:	%{version}
