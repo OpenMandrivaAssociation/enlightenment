@@ -5,7 +5,6 @@
 %define version	1.0.13
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
-%define _disable_ld_no_undefined 1
 
 Name:		%{name}
 Version:	%{version}
@@ -20,6 +19,7 @@ BuildRequires:  x11-data-bitmaps
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  libxxf86vm-devel
 BuildRequires:  pkgconfig(sm)
+BuildRequires:	pkgconfig(sndfile)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  texinfo
