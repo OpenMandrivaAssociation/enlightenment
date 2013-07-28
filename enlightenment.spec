@@ -2,17 +2,17 @@
 %define bin_name e16
 %define theme_version 1.0.0
 %define doc_version 0.16.8.0.2
-%define version	1.0.11
+%define version	1.0.13
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
 Name:		%{name}
 Version:	%{version}
-Release:	4
+Release:	1
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
-BuildRequires:  esound-devel
+BuildRequires:  pulseaudio-devel
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  imlib2-devel
 BuildRequires:  x11-data-bitmaps
