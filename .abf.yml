@@ -1,5 +1,8 @@
-sources:
-  "e16-docs-0.16.8.0.2.tar.gz": 7739d74fac9bf3c8f5fe3858c897450489920a2e
-  "e16-themes-1.0.0.tar.gz": 2fedae04c7563a6bc43497bec0f189e8d439c183
-  "enlightenment-0.16.5-themes-i18n.tar.bz2": d9ff758e4eade080f5ba803c044b9e1f9bf97ef6
+removed_sources:
   e16-1.0.13.tar.gz: bcb74385fb6d0732f735f27264ae02b539d136c9
+sources:
+  e16-1.0.14.tar.gz: b8ef9fc8c1ce94d99a8bb41ccf18f9115b153e54
+  e16-docs-0.16.8.0.2.tar.gz: 7739d74fac9bf3c8f5fe3858c897450489920a2e
+  e16-themes-1.0.0.tar.gz: 2fedae04c7563a6bc43497bec0f189e8d439c183
+  enlightenment-0.16.5-themes-i18n.tar.bz2: d9ff758e4eade080f5ba803c044b9e1f9bf97ef6
+  enlightenment.png: 64135ccd2d6e0d53b9b1a475026694269dea2e69
