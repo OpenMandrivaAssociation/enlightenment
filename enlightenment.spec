@@ -69,17 +69,6 @@ cd ..
 %install
 rm -rf %{buildroot}
 
-##build will fail if not done in this manner--CAE##
-%makeinstall_std
-
-# Install icons
-install -d 644 %{buildroot}%{_miconsdir}
-install -d 644 %{buildroot}%{_iconsdir}
-install -d 644 %{buildroot}%{_liconsdir}
-install -m 644 %SOURCE7 %{buildroot}%{_miconsdir}
-convert %SOURCE7 -geometry 32x32 %{buildroot}%{_iconsdir}/%{name}.png
-convert %SOURCE7 -geometry 48x48 %{buildroot}%{_liconsdir}/%{name}.png
-
 rm -f %{buildroot}%{_datadir}/applications/*.desktop
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -111,7 +100,6 @@ EOF
 %_bindir/enlightenment_start
 %_bindir/enlightenment_open
 %_datadir/enlightenment
-%_bindir/goe
 %exclude %_datadir/xsessions/*
 %_libdir/enlightenment
 %config %_sysconfdir/X11/wmsession.d/23E19
