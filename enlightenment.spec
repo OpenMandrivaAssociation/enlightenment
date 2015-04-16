@@ -21,6 +21,22 @@ BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  texinfo
 BuildRequires:  imagemagick
+
+BuildRequires:  xcb-util-devel
+BuildRequires:  efl-devel
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-shape)
+BuildRequires:  pkgconfig(xcb-keysyms)
+BuildRequires:	gettext-devel
+BuildRequires:	pam-devel
+BuildRequires:	libalsa-devel
+BuildRequires:	multiarch-utils
+Requires:	acpitool
+Requires:   desktop-common-data
+Requires:	consolekit
+Requires:	libmount1 >= 2.22.2
+
+
 Source0:	https://download.enlightenment.org/enlightenment/rel/apps/enlightenment/enlightenment-0.9.4.tar.xz
 Requires:	imagemagick >= 4.2.9
 Provides:	e19 Enlightenment
@@ -87,30 +103,33 @@ SCRIPT:
 exec %{_bindir}/%{bin_name}
 EOF
 
-#installed in right directory by %doc macro in file list
-rm -f %{buildroot}%{_docdir}/e16/README.html %{buildroot}%{_docdir}/e19/e19-docs.html
+%files -f enlightenment.lang
+%defattr(-,root,root)
+%doc AUTHORS README COPYING doc/*
+%_bindir/enlightenment
+%_bindir/enlightenment_imc
+%_bindir/enlightenment_remote
+%_bindir/enlightenment_start
+%_bindir/enlightenment_open
+%_datadir/enlightenment
+%_bindir/goe
+%exclude %_datadir/xsessions/*
+%_libdir/enlightenment
+%config %_sysconfdir/X11/wmsession.d/23E19
+%config(noreplace) %_sysconfdir/enlightenment/sysactions.conf
+%_sysconfdir/xdg/menus/enlightenment.menu
+%_sysconfdir/xdg/menus/e-applications.menu
 
 
-cd %{bin_name}-docs-%{doc_version}
-%makeinstall_std
-cd ..
+%files devel
+%defattr(-,root,root)
+%{_bindir}/enlightenment-config
+%{_libdir}/pkgconfig/enlightenment.pc
+%multiarch %{multiarch_bindir}/enlightenment-config
+%_includedir/enlightenment
+%{_libdir}/pkgconfig/everything.pc
 
-%find_lang %{bin_name}
-rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
-
-%files -f %{bin_name}.lang
-%defattr(-, root, root,755)
-%doc AUTHORS COPYING ChangeLog COMPLIANCE
-%doc sample-scripts
-%config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
-%{_bindir}/*
-%{_libdir}/e19
-%{_datadir}/applications/*
-%{_datadir}/gnome-session/sessions/e19-gnome.session
-%{_datadir}/%{bin_name}
-%{_datadir}/doc/*
-%{_datadir}/xsessions/*.desktop
-%{_mandir}/man1/*
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
+%files efile
+%defattr(-,root,root)
+%_bindir/enlightenment_filemanager
+%_datadir/applications/enlightenment_filemanager.desktop
