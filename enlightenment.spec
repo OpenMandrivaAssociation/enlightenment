@@ -1,16 +1,13 @@
 %define name	enlightenment
-%define bin_name e16
-%define theme_version 1.0.0
-%define doc_version 0.16.8.0.2
-%define version	1.0.14
+%define version	0.19.4
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
 Name:		%{name}
 Version:	%{version}
-Release:	2
+Release:	0
 Summary:	%{Summary}
-License:	e16 and GPLv2+
+License:	e19 and GPLv2+
 Group:		Graphical desktop/Enlightenment
 BuildRequires:  pulseaudio-devel
 BuildRequires:  pkgconfig(freetype2)
@@ -24,17 +21,9 @@ BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  texinfo
 BuildRequires:  imagemagick
-Source0:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-%{version}.tar.gz
-Source1:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-docs-%{doc_version}.tar.gz
-Source2:	http://prdownloads.sourceforge.net/enlightenment/%{bin_name}-themes-%{theme_version}.tar.gz
-Source7:	%{name}.png
-# this overrides some themes' *.cfg files with other slightly modified to
-# use fontsets, and so be able to display text in any language
-# the files inside that tarball may need to be modified or new added if the
-# themes' files from the Enlightenment sources change -- pablo
-Source8:	%{name}-0.16.5-themes-i18n.tar.bz2  
+Source0:	https://download.enlightenment.org/enlightenment/rel/apps/enlightenment/enlightenment-0.9.4.tar.xz
 Requires:	imagemagick >= 4.2.9
-Provides:	e16 Enlightenment
+Provides:	e19 Enlightenment
 URL:		http://www.enlightenment.org/
 
 %description
@@ -51,21 +40,15 @@ This package will install the Enlightenment window manager.
 
 %prep
 
-%setup -q -n %bin_name-%version -a 1 -a 2 
+%setup -q -n  
 
 %build
-%configure2_5x  --enable-fsstd \
-	    --enable-sound \
-	    --enable-upgrade \
-	    --enable-zoom 
-
-cd %{bin_name}-themes-%{theme_version}
+%configure2_5x  --disable-static \
+	    --enable-sound
+	    
 ./configure --prefix=%{_prefix}
 cd ..
 
-cd %{bin_name}-docs-%{doc_version}
-./configure --prefix=%{_prefix}
-cd ..
 %make
 
 %install
@@ -105,27 +88,12 @@ exec %{_bindir}/%{bin_name}
 EOF
 
 #installed in right directory by %doc macro in file list
-rm -f %{buildroot}%{_docdir}/e16/README.html %{buildroot}%{_docdir}/e16/e16-docs.html
-
-cd %{bin_name}-themes-%{theme_version}
-%makeinstall_std
-cd ..
-
-# overwrite some themes' files with i18n'ed ones
-bzcat %SOURCE8 | tar xvf - -C %{buildroot}%{_datadir}/%{bin_name}
+rm -f %{buildroot}%{_docdir}/e16/README.html %{buildroot}%{_docdir}/e19/e19-docs.html
 
 
 cd %{bin_name}-docs-%{doc_version}
 %makeinstall_std
 cd ..
-
-#rm some empty theme files
-rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BlueSteel/sound/sound.cfg
-rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BlueSteel/slideouts/slideouts.cfg
-rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/slideouts/slideouts.cfg
-rm -fr %{buildroot}/%{_datadir}/%{bin_name}/themes/BrushedMetal-Tigert/buttons/buttons.cfg
-rm -rf %{buildroot}/%{_datadir}/%{bin_name}/themes/BlueSteel/buttons/buttons.cfg
-rm -rf `find %{buildroot} -name .xvpics`
 
 %find_lang %{bin_name}
 rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
@@ -136,9 +104,9 @@ rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
 %doc sample-scripts
 %config(noreplace) %{_sysconfdir}/X11/wmsession.d/*
 %{_bindir}/*
-%{_libdir}/e16
+%{_libdir}/e19
 %{_datadir}/applications/*
-%{_datadir}/gnome-session/sessions/e16-gnome.session
+%{_datadir}/gnome-session/sessions/e19-gnome.session
 %{_datadir}/%{bin_name}
 %{_datadir}/doc/*
 %{_datadir}/xsessions/*.desktop
