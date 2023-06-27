@@ -17,7 +17,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  imlib2-devel
 BuildRequires:  x11-data-bitmaps
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  libxxf86vm-devel
+BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:	pkgconfig(sndfile)
 BuildRequires:  pkgconfig(xft)
