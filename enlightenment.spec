@@ -143,6 +143,6 @@ rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
 %{_datadir}/doc/*
 %{_datadir}/xsessions/*.desktop
 %{_mandir}/man1/*
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
+#{_miconsdir}/%{name}.png
+#{_iconsdir}/%{name}.png
+#{_liconsdir}/%{name}.png
