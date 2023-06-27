@@ -79,8 +79,8 @@ install -d 644 %{buildroot}%{_miconsdir}
 install -d 644 %{buildroot}%{_iconsdir}
 install -d 644 %{buildroot}%{_liconsdir}
 install -m 644 %SOURCE7 %{buildroot}%{_miconsdir}
-convert %SOURCE7 -geometry 32x32 %{buildroot}%{_iconsdir}/%{name}.png
-convert %SOURCE7 -geometry 48x48 %{buildroot}%{_liconsdir}/%{name}.png
+#convert %SOURCE7 -geometry 32x32 %{buildroot}%{_iconsdir}/%{name}.png
+#convert %SOURCE7 -geometry 48x48 %{buildroot}%{_liconsdir}/%{name}.png
 
 rm -f %{buildroot}%{_datadir}/applications/*.desktop
 mkdir -p %{buildroot}%{_datadir}/applications
