@@ -2,7 +2,7 @@
 %define bin_name e16
 %define theme_version 1.0.0
 %define doc_version 0.16.8.0.2
-%define version	1.0.17
+%define version	1.0.27
 %define Name	Enlightenment
 %define Summary	The Enlightenment window manager
 
@@ -79,8 +79,8 @@ install -d 644 %{buildroot}%{_miconsdir}
 install -d 644 %{buildroot}%{_iconsdir}
 install -d 644 %{buildroot}%{_liconsdir}
 install -m 644 %SOURCE7 %{buildroot}%{_miconsdir}
-convert %SOURCE7 -geometry 32x32 %{buildroot}%{_iconsdir}/%{name}.png
-convert %SOURCE7 -geometry 48x48 %{buildroot}%{_liconsdir}/%{name}.png
+#convert %SOURCE7 -geometry 32x32 %{buildroot}%{_iconsdir}/%{name}.png
+#convert %SOURCE7 -geometry 48x48 %{buildroot}%{_liconsdir}/%{name}.png
 
 rm -f %{buildroot}%{_datadir}/applications/*.desktop
 mkdir -p %{buildroot}%{_datadir}/applications
@@ -143,6 +143,4 @@ rm -f %{buildroot}/usr/etc/X11/dm/Sessions/enlightenment.desktop
 %{_datadir}/doc/*
 %{_datadir}/xsessions/*.desktop
 %{_mandir}/man1/*
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
+%{_iconsdir}/mini/enlightenment.png
