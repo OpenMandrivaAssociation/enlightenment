@@ -12,6 +12,11 @@ Release:	1
 Summary:	%{Summary}
 License:	e16 and GPLv2+
 Group:		Graphical desktop/Enlightenment
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:  pulseaudio-devel
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  imlib2-devel
